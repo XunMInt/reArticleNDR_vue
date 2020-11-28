@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河南牧业经济学院校园防疫</title>
+    <!-- 引入公共样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入bootstrap.min.css文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 引入头部公共文件 -->
+    <link rel="stylesheet" href="css/head.css">
+    <!-- 引入底部公共文件 -->
+    <link rel="stylesheet" href="css/foot.css">
+    <!-- 引入jQuery文件 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入bootstrap.min.js文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 引入主页css文件 -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入图标文件 -->
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <!-- 引入axios -->
+    <script src="js/axios.js"></script>
+    <!--引入icon图标-->
+    <link rel="icon" href="favicon.ico">
+
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="header  head">
+            <div class="title wapper">
+                <a href=""><img src="images/images.png" alt=""></a>
+                <h1 class="h1">校园疫情防护工作站</h1>
+            </div>
+        </div>
+        <div class="nav  head">
+            <div class="inner wapper">
+                <ul>
+                    <a href="/index.html">
+                        <li class="aaa">网站首页</li>
+                    </a>
+                    <a v-for="(item, index) in calssifyList" :key="index" :href="'/list.html?classify='+item">
+                        <li class="aaa">
+                            {{item}}
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="banner head">
+            <!-- 轮播图   -->
+            <div class="inner wapper">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!--轮播图主题 -->
+                    <div class="carousel-inner" role="listbox">
+                        <div :class=" index == 0 ? 'item active' : 'item'" v-for="(item, index) in rotationList"
+                            :key="index">
+                            <a href="javascript:;"><img width="100%" :src="item.img" :alt="item.rotation"
+                                    :title="item.rotation"></a>
+                        </div>
+                    </div>
+                    <!-- 两侧按钮 -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="main1 wapper">
+            <div class="inner">
+                <div class="m">
+                    <div class="mbox">
+                        <ul class="one">
+                            <h3>{{calssifyList[0]}}</h3><span><a
+                                    :href="'list.html?classify='+ calssifyList[0]">更多>></a></span>
+                        </ul>
+                        <ul class="two">
+                            <li v-for="(item, index) in articleListA[calssifyList[0]]" :key="index" :title="item">
+                                <i class="iconfont">&#xe646;</i>
+                                <a :href="'article.html?classify='+ calssifyList[0] +'&article='+item">{{item}}</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="m">
+                    <div class="mbox">
+                        <ul class="one">
+                            <h3>{{calssifyList[1]}}</h3><span><a
+                                    :href="'list.html?classify='+ calssifyList[1]">更多>></a></span>
+                        </ul>
+                        <ul class="two">
+                            <li v-for="(item, index) in articleList[calssifyList[1]]" :key="index" :title="item">
+                                <i class="iconfont">&#xe646;</i>
+                                <a :href="'article.html?classify='+ calssifyList[1] +'&article='+item">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="m">
+                    <div class="mbox">
+                        <ul class="one">
+                            <h3>{{calssifyList[2]}}</h3><span><a
+                                    :href="'list.html?classify='+ calssifyList[2]">更多>></a></span>
+                        </ul>
+                        <ul class="two">
+                            <li v-for="(item, index) in articleList[calssifyList[2]]" :key="index" :title="item">
+                                <i class="iconfont">&#xe646;</i>
+                                <a :href="'article.html?classify='+ calssifyList[2] +'&article='+item">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="ins wapper">
+            <h1>河南牧业经济学院疫情防控专题平台</h1>
+        </div>
+        <div class="main2 wapper">
+            <div class="mbotoom">
+                <nav class="m1">
+                    <div class="mbox">
+                        <ul class="one">
+                            <h3>{{calssifyList[3]}}</h3><span><a
+                                    :href="'list.html?classify='+ calssifyList[3]">更多>></a></span>
+                        </ul>
+                        <ul class="two">
+                            <li v-for="(item, index) in articleList[calssifyList[3]]" :key="index" :title="item">
+                                <i class="iconfont">&#xe646;</i>
+                                <a :href="'article.html?classify='+ calssifyList[3] +'&article='+item">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+                <nav class="m2">
+                    <div class="mbox">
+                        <ul class="one">
+                            <h3>{{calssifyList[4]}}</h3><span><a
+                                    :href="'list.html?classify='+ calssifyList[4]">更多>></a></span>
+                        </ul>
+                        <ul class="two">
+                            <li v-for="(item, index) in articleList[calssifyList[4]]" :key="index" :title="item">
+                                <i class="iconfont">&#xe646;</i>
+                                <a :href="'article.html?classify='+ calssifyList[4] +'&article='+item">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+        <div class="foot head">
+            <div class="footer wapper">
+                <p>河南牧业经济学院 2020 疫情防控专题网站</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+    //设置默认地址
+    axios.defaults.baseURL = 'http://fanyi.xmint.cn/';
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            calssifyList: [],
+            rotationList: [],
+            articleList: {},
+            articleListA: {}
+        },
+        created() {
+            this.getCalssifyList();
+            this.getRotationList();
+            this.getArticleList();
+        },
+        methods: {
+            //获取分类列表
+            getCalssifyList: async function () {
+                var tmpData = await axios.get('calssifyList');
+                this.calssifyList = tmpData.data.data.list;
+            },
+            //获取轮播图列表
+            getRotationList: async function () {
+                var tmpData = await axios.get('rotation');
+                tmpData.data.data.list.forEach(function (ele, index) {
+                    ele.id = index;
+                });
+                this.rotationList = tmpData.data.data.list;
+            },
+            //获取文章列表
+            getArticleList: async function () {
+                var tmpData = await axios.get('calssifyList');
+                var that = this;
+                for (let i = 0; i < tmpData.data.data.list.length; i++) {
+                    var tmpDataA = await axios.get(`articleList?classify=${tmpData.data.data.list[i]}&pagesize=5&pagenum=1`);
+                    that.articleList[tmpData.data.data.list[i]] = tmpDataA.data.data.list;
+                }
+                this.articleListA = this.articleList;
+            }
+        }
+    })
+</script>
+
+</html>

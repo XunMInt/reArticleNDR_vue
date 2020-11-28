@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入公共样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入头部公共文件 -->
+    <link rel="stylesheet" href="css/head.css">
+    <!-- 引入底部公共文件 -->
+    <link rel="stylesheet" href="css/foot.css">
+    <!-- 引入list页面的css文件 -->
+    <link rel="stylesheet" href="css/list.css">
+    <!-- 引入图标文件 -->
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <!-- 引入axios -->
+    <script src="js/axios.js"></script>
+    <!--引入icon图标-->
+    <link rel="icon" href="favicon.ico">
+
+</head>
+
+<body>
+    <div id="app">
+        <title>{{classify}}__河南牧业经济学院防疫</title>
+        <div class="header  head">
+            <div class="title wapper">
+                <a href=""><img src="images/images.png" alt=""></a>
+                <h1>校园疫情防护工作站</h1>
+            </div>
+        </div>
+        <div class="nav  head">
+            <div class="inner wapper">
+                <ul>
+                    <a href="/index.html">
+                        <li class="aaa">网站首页</li>
+                    </a>
+                    <a v-for="(item, index) in calssifyList" :key="index" :href="'/list.html?classify='+item">
+                        <li class="aaa">
+                            {{item}}
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="list wapper">
+            <div class="tit">
+                <span class="title">
+                    <h3>{{classify}}</h3>
+                </span>
+                <span class="home-page"><a href="index.html">首页</a><span>&nbsp;|&nbsp; </span><a
+                        href="javascript:;">{{classify}}</a></span>
+            </div>
+
+            <div class="inner">
+                <ul>
+                    <li v-for="(item, index) in articleList" :key="index" :title="item">
+                        <i class="iconfont">&#xe646;</i>
+                        <p><a class="atitle" :href="'article.html?classify='+ classify +'&article='+item">{{item}}</a>
+                        </p>
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+            <div class="page">
+                <ul>
+                    <li>
+                        <p>每页<b> {{size}} </b>记录</p>
+                        <p>共计<b> {{total}} </b>记录</p>
+                    </li>
+                    <li>
+                        <p @click="goTo(1)"><a class="but">第一页</a></p>
+                        <p @click="backPage"><a class="but">
+                                <<上一页 </a>
+                        </p>
+                        <p @click="nextPage"><a class="but">下一页>></a></p>
+                        <p @click="goTo(pageSize)"><a class="but">尾页</a></p>
+                    </li>
+                    <li>
+                        <p>页码 <b>{{pageSize}}/{{pagenum}}</b></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot head">
+            <div class="footer wapper">
+                <p>河南牧业经济学院 2020 疫情防控专题网站</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //设置默认地址
+    axios.defaults.baseURL = 'http://fanyi.xmint.cn/';
+
+    //获取get参数函数
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            calssifyList: [],
+            classify: "",
+            articleList: [],
+            size: 14, //每页显示数
+            pageSize: 0, //总页数
+            pagenum: 1, //当前页
+            total: 0 //总个数
+        },
+        created() {
+            this.getCalssifyList();
+            this.classify = decodeURI(getQueryVariable("classify"));
+            this.getArticleList();
+        },
+        methods: {
+            //获取分类列表
+            getCalssifyList: async function () {
+                var tmpData = await axios.get('calssifyList');
+                this.calssifyList = tmpData.data.data.list;
+            },
+            //获取文章列表
+            getArticleList: async function () {
+                var tmpData = await axios.get('calssifyList');
+                var tmpDataA = await axios.get(`articleList?classify=${this.classify}&pagesize=${this.size}&pagenum=${this.pagenum}`);
+                this.articleList = tmpDataA.data.data.list;
+                this.pageSize = tmpDataA.data.data.size;
+                this.total = tmpDataA.data.data.total;
+            },
+            //下一页
+            nextPage: function () {
+                if (this.pagenum < this.pageSize) {
+                    this.pagenum++;
+                    this.getArticleList();
+                }
+            },
+            //上一页
+            backPage: function () {
+                if (this.pagenum > 1) {
+                    this.pagenum--;
+                    this.getArticleList();
+                }
+            },
+            //跳转第一页
+            goTo(page) {
+                this.pagenum = page;
+                this.getArticleList();
+            }
+        }
+    })
+</script>
+
+</html>

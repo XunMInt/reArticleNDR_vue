@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 引入公共样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入头部公共文件 -->
+    <link rel="stylesheet" href="css/head.css">
+    <!-- 引入底部公共文件 -->
+    <link rel="stylesheet" href="css/foot.css">
+    <!-- 引入主页css文件 -->
+    <link rel="stylesheet" href="css/list.css">
+    <!-- 引入article页面的css文件 -->
+    <link rel="stylesheet" href="css/article.css">
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <!-- 引入axios -->
+    <script src="js/axios.js"></script>
+    <!--引入icon图标-->
+    <link rel="icon" href="favicon.ico">
+
+
+</head>
+
+<body>
+    <div id="app">
+        <title>{{article}}__河南牧业经济学院防疫</title>
+        <div class="header  head">
+            <div class="title wapper">
+                <a href=""><img src="images/images.png" alt=""></a>
+                <h1>校园疫情防护工作站</h1>
+            </div>
+        </div>
+        <div class="nav  head">
+            <div class="inner wapper">
+                <ul>
+                    <a href="/index.html">
+                        <li class="aaa">网站首页</li>
+                    </a>
+                    <a v-for="(item, index) in calssifyList" :key="index" :href="'/list.html?classify='+item">
+                        <li class="aaa">
+                            {{item}}
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="article wapper">
+            <div class="tit">
+                <span class="title">
+                    <h3>{{classify}}</h3>
+                </span>
+                <span class="home-page"><a href="index.html">首页</a><span>&nbsp;|&nbsp; </span><a
+                        href="javascript:;">{{classify}}</a></span>
+            </div>
+            <div class="wz-content">
+                <h1>{{article}}</h1>
+                <div class="content" v-html="articleContent">
+                </div>
+
+            </div>
+        </div>
+        <div class="foot head">
+            <div class="footer wapper">
+                <p>河南牧业经济学院 2020 疫情防控专题网站</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //设置默认地址
+    axios.defaults.baseURL = 'http://fanyi.xmint.cn/';
+
+    //获取get参数函数
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            calssifyList: [],
+            classify: "",
+            article: "",
+            articleContent: ""
+        },
+        created() {
+            this.getCalssifyList();
+            this.classify = decodeURI(getQueryVariable("classify"));
+            this.article = decodeURI(getQueryVariable("article"));
+            this.getArticleContent();
+        },
+        methods: {
+            //获取分类列表
+            getCalssifyList: async function () {
+                var tmpData = await axios.get('calssifyList');
+                this.calssifyList = tmpData.data.data.list;
+            },
+            //获取文章信息
+            getArticleContent: async function () {
+                var tmpData = await axios.get(`article?classify=${this.classify}&article=${this.article}`);
+                this.articleContent = tmpData.data.data.content;
+            }
+        }
+    })
+
+</script>
+
+</html>

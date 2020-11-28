@@ -1,0 +1,16 @@
+{
+  "id": "1797523",
+  "name": "htmlStudy",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15371",
+      "name": "方块",
+      "font_class": "fangkuai",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    }
+  ]
+}

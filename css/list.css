@@ -1,0 +1,87 @@
+.tit {
+  height       : 60px;
+  border-bottom: 2px solid #dbdbdb;
+}
+
+.tit .title {
+  float : left;
+  height: 100%;
+}
+
+.tit .title h3 {
+  margin-top   : -2px;
+  font-size    : 24px;
+  line-height  : 60px;
+  color        : #921f1a;
+  border-bottom: 2px solid #9f2925;
+}
+
+.tit .home-page {
+  float      : right;
+  height     : 100%;
+  line-height: 60px;
+}
+.list .inner{
+  min-height: 500px;
+}
+.list .inner ul li {
+  width        : 82%;
+  height       : 36px;
+  margin       : 5px 0;
+  line-height  : 50px;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+}
+
+.list .inner ul li:hover .atitle {
+  color: #993333;
+}
+
+.list .inner ul li i {
+  float    : left;
+  color    : #921f1a;
+  font-size: 23px;
+}
+
+.list .inner ul li a {
+  text-decoration  : none;
+  /* letter-spacing: 1px; */
+  font-size        : 16px;
+  color            : #313131;
+}
+
+.list .page {
+  height    : 63px;
+  width     : 100%;
+  border-top: 2px solid #dbdbdb;
+  margin-top: 20px;
+}
+
+.list .page ul {
+  margin: 0 auto;
+  width : 50%;
+  height: 100%;
+}
+
+.list .page ul li {
+  margin-left: 20px;
+  line-height: 60px;
+}
+
+.list .page ul li p {
+  float      : left;
+  margin     : 0;
+  cursor     : default;
+  line-height: 60px;
+  margin-left: 20px;
+}
+
+.but {
+  cursor             : pointer;
+  -moz-user-select   : none;
+  -o-user-select     : none;
+  -khtml-user-select : none;
+  -webkit-user-select: none;
+  -ms-user-select    : none;
+  user-select        : none;
+}

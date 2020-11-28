@@ -1,0 +1,17 @@
+.foot {
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+    background-color: #b5243e;
+  }
+  .foot .footer {
+    height: 120px;
+    overflow: hidden;
+    background-color: #b5243e;
+  }
+  .foot .footer p {
+  
+    margin: 0;
+    font-size: 25px;
+    color: #ffffff;
+  }

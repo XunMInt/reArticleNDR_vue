@@ -1,0 +1,161 @@
+.banner {
+  height: 550px;
+  background-color: #e7e2df;
+}
+.banner .inner {
+  overflow: hidden;
+  height: 100%;
+}
+.banner .inner .carousel-inner > .item > a > img,
+.banner .inner .carousel-inner > .item > img,
+.banner .inner .img-responsive,
+.banner .inner .thumbnail a > img,
+.banner .inner .thumbnail > img {
+  width: 100%;
+  height: 550px;
+}
+.main1 {
+  height: 280px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.main1 .inner {
+  height: 100%;
+  width: 100%;
+}
+.main1 .inner .m {
+  float: left;
+  margin-left: 36px;
+  width: 31.333%;
+  height: 100%;
+}
+.main1 .inner :first-child {
+  margin-left: 0;
+}
+.ins {
+  height: 170px;
+  background-image: linear-gradient( 135deg, #bd4751 10%,#a22c29 100%);
+  text-align: center;
+  border-radius: 15px;
+}
+.ins h1 {
+  font-family: "楷体";
+  font-weight: 600;
+  font-size: 62px;
+  color: #f1f1f1;
+ 
+  line-height: 170px;
+}
+.main2 {
+  height: 380px;
+  margin-bottom: 30px;
+}
+.main2 .mbotoom {
+  width: 100%;
+  height: 100%;
+}
+.main2 .mbotoom .m1 {
+  float: left;
+  margin-right: 48px;
+  width: 48%;
+  height: 380px;
+}
+.main2 .mbotoom .m1 h3 {
+  line-height: 90px;
+}
+.main2 .mbotoom .m1 span {
+  line-height: 100px;
+}
+.main2 .mbotoom .m1 li {
+  line-height: 40px;
+}
+.main2 .mbotoom .m2 {
+  float: left;
+  width: 48%;
+  height: 380px;
+}
+.main2 .mbotoom .m2 h3 {
+  line-height: 90px;
+}
+.main2 .mbotoom .m2 span {
+  line-height: 100px;
+}
+.main2 .mbotoom .m2 li {
+  line-height: 40px;
+}
+.mbox {
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding-right: 35px;
+}
+.mbox .one {
+  float: left;
+  width: 100%;
+  height: 25%;
+  padding-top: 10px;
+  border-bottom: 3px solid #9f2925;
+  color: #993333;
+}
+.mbox .one h3 {
+  float: left;
+  margin: 0px;
+  padding: 0;
+  width: 50%;
+  height: 100%;
+  font-size: 32px;
+  text-align: left;
+  line-height: 70px;
+  cursor: pointer;
+}
+.mbox .one span {
+  float: right;
+  width: 40%;
+  height: 100%;
+  text-align: right;
+  line-height: 70px;
+}
+.mbox .one span a {
+  color: #921f1a;
+  font-size: 16px;
+ 
+}
+.mbox .two {
+  float: left;
+  width: 100%;
+  height: 75%;
+  margin-top: 22.5px;
+}
+.mbox .two i {
+  font-size: 24px;
+}
+.mbox .two li {
+  float: left;
+  width: 100%;
+  height: 14.666%;
+  padding-left: 1%;
+  margin-bottom: 5px;
+  color: #fff;
+  line-height: 30px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #993333;
+}
+.mbox .two li a {
+  color: #000;
+  margin-left: 10px;
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-decoration: none;
+}
+.mbox .two li  :hover{
+  color:#993333 ;
+  transition:all 0.5s;
+}
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
