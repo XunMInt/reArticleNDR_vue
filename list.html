@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +21,6 @@
     <link rel="icon" href="favicon.ico">
 
 </head>
-
 <body>
     <div id="app">
         <title>{{classify}}__河南牧业经济学院防疫</title>
@@ -46,7 +44,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="list wapper">
             <div class="tit">
                 <span class="title">
@@ -55,7 +52,6 @@
                 <span class="home-page"><a href="index.html">首页</a><span>&nbsp;|&nbsp; </span><a
                         href="javascript:;">{{classify}}</a></span>
             </div>
-
             <div class="inner">
                 <ul>
                     <li v-for="(item, index) in articleList" :key="index" :title="item">
@@ -63,11 +59,7 @@
                         <p><a class="atitle" :href="'article.html?classify='+ classify +'&article='+item">{{item}}</a>
                         </p>
                     </li>
-
-
-
                 </ul>
-
             </div>
             <div class="page">
                 <ul>
@@ -95,13 +87,10 @@
             </div>
         </div>
     </div>
-
 </body>
-
 <script>
     //设置默认地址
     axios.defaults.baseURL = 'http://fanyi.xmint.cn/';
-
     //获取get参数函数
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -112,7 +101,6 @@
         }
         return (false);
     }
-
     var app = new Vue({
         el: '#app',
         data: {

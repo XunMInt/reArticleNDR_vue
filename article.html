@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- 引入公共样式表 -->
     <link rel="stylesheet" href="css/style.css">
     <!-- 引入头部公共文件 -->
@@ -21,10 +19,7 @@
     <script src="js/axios.js"></script>
     <!--引入icon图标-->
     <link rel="icon" href="favicon.ico">
-
-
 </head>
-
 <body>
     <div id="app">
         <title>{{article}}__河南牧业经济学院防疫</title>
@@ -48,7 +43,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="article wapper">
             <div class="tit">
                 <span class="title">
@@ -70,13 +64,10 @@
             </div>
         </div>
     </div>
-
 </body>
-
 <script>
     //设置默认地址
     axios.defaults.baseURL = 'http://fanyi.xmint.cn/';
-
     //获取get参数函数
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -87,7 +78,6 @@
         }
         return (false);
     }
-
     var app = new Vue({
         el: '#app',
         data: {
@@ -115,7 +105,5 @@
             }
         }
     })
-
 </script>
-
 </html>
